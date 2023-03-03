@@ -1,6 +1,7 @@
 # nodejs
 
 ```json
+  "type": "module",
   "scripts": {
     "start": "node index"
   },

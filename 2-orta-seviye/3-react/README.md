@@ -13,3 +13,8 @@
 node (HTML element) | It can produce about 200,000 Virtual DOM
 Nodes / Second |
 | It represents the Ul of your application | It is only a virtual representation of the DOM |
+
+## ES6
+
+- Arrow function ecmascript 6 ile geldi.
+- backtick (`) ile string içinde parametre yazılabilir.
