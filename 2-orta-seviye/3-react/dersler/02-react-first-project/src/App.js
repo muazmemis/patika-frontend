@@ -5,6 +5,13 @@ import User from "./components/User";
 const name = "Muaz";
 const surname = "Memiş";
 const isLogin = true;
+const friends = [
+  { id: 1, name: "Ahmet" },
+  { id: 2, name: "Tayfun" },
+  { id: 3, name: "Gökhan" },
+  { id: 4, name: "Engin" },
+  { id: 5, name: "Sedat" },
+];
 
 function App() {
   return (
@@ -31,7 +38,13 @@ function App() {
       {/* </header>
       </div> */}
 
-      <User name="Muaz" surname={surname} age={33} isLogin={true} />
+      <User
+        name="Muaz"
+        surname={surname}
+        age={33}
+        isLogin={true}
+        friends={friends}
+      />
     </>
   );
 
