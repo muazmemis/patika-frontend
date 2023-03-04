@@ -3,6 +3,7 @@ import Header from "./components/Header";
 
 const name = "Muaz";
 const surname = "Memiş";
+const isLogin = true;
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
     <>
       <div className="App">
         <header className="App-header">
-          Hello from App
+          {/* Hello from App
           <Header />
           <p className="xyz">
             Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -20,9 +21,12 @@ function App() {
           <label htmlFor="myinput">
             Name
             <input id="myinput"></input>
-          </label>
-          <h1>{name}</h1>
-          <h1>{`${name} ${surname}`}</h1>
+          </label> */}
+          {/* <h1>{name}</h1>
+          <h1>{`${name} ${surname}`}</h1> */}
+          {/* <h1>{isLogin && "login"}</h1>
+          <h1>{!isLogin && "not login"}</h1> */}
+          <h1>{isLogin ? `${name} is login` : "not login"}</h1>
         </header>
       </div>
     </>
