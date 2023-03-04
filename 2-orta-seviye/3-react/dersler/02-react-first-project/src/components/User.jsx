@@ -2,11 +2,14 @@ import PropTypes from "prop-types";
 
 function User(p) {
   console.log(p);
-  const { name, surname, age, isLogin, friends } = p;
+  const { name, surname, age, isLogin, friends, address } = p;
   return (
     <div>
       {/* {p.isLogin ? `User ${p.name} ${p.surname} ${p.age}` : "not login"} */}
       <h1>{isLogin ? `User ${name} ${surname} ${age}` : "not login"}</h1>
+      <h1>
+        {address.title} - {address.zip}
+      </h1>
       {/* {friends.map((friend, i) => (
         // <div key={i}>{friend} </div>
         <div key={friend.id}>{friend.name} </div>
@@ -27,6 +30,10 @@ User.propTypes = {
   age: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   isLogin: PropTypes.bool.isRequired,
   friends: PropTypes.array,
+  address: PropTypes.shape({
+    title: PropTypes.string,
+    zip: PropTypes.number,
+  }),
 };
 
 export default User;

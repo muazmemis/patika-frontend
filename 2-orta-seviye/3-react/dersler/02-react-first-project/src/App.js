@@ -44,6 +44,10 @@ function App() {
         age={33}
         isLogin={true}
         friends={friends}
+        address={{
+          title: "GOP/İstanbul",
+          zip: 34000,
+        }}
       />
     </>
   );
