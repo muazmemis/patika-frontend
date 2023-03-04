@@ -14,4 +14,5 @@ npm start
 npm i slugify
 npm i # delete node_modules next run command
 npm i node-fetch
+npm i axios
 ```
