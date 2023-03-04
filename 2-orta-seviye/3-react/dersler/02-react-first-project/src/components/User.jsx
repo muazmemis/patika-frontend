@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 function User(p) {
   console.log(p);
   const { name, surname, age, isLogin, friends, address } = p;
+
+  if (!isLogin) return <div>Not login</div>;
+
   return (
     <div>
       {/* {p.isLogin ? `User ${p.name} ${p.surname} ${p.age}` : "not login"} */}
@@ -34,6 +37,11 @@ User.propTypes = {
     title: PropTypes.string,
     zip: PropTypes.number,
   }),
+};
+
+User.defaultProps = {
+  name: "not name",
+  isLogin: false,
 };
 
 export default User;
