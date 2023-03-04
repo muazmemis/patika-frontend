@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function User(p) {
   console.log(p);
   const { name, surname, age, isLogin, friends } = p;
@@ -15,6 +17,14 @@ function User(p) {
       })}
     </div>
   );
+}
+
+User.propTypes = {
+    name: PropTypes.string,
+    surname: PropTypes.string,
+    age: PropTypes.number,
+    isLogin: PropTypes.bool,
+    friends: PropTypes.array,
 }
 
 export default User;
