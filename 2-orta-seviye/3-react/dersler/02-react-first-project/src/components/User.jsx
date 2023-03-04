@@ -11,7 +11,7 @@ function User(p) {
         // <div key={i}>{friend} </div>
         <div key={friend.id}>{friend.name} </div>
       ))} */}
-      {friends.map((friend, i) => {
+      {friends && friends.map((friend, i) => {
         const name = friend.name;
         return <div key={friend.id}>{name} </div>;
       })}
@@ -20,11 +20,11 @@ function User(p) {
 }
 
 User.propTypes = {
-    name: PropTypes.string,
-    surname: PropTypes.string,
-    age: PropTypes.number,
-    isLogin: PropTypes.bool,
-    friends: PropTypes.array,
-}
+  name: PropTypes.string.isRequired,
+  surname: PropTypes.string.isRequired,
+  age: PropTypes.number.isRequired,
+  isLogin: PropTypes.bool.isRequired,
+  friends: PropTypes.array,
+};
 
 export default User;
