@@ -1,11 +1,14 @@
-import logo from "./logo.svg";
 import "./App.css";
+import A from "./components/A";
+import B from "./components/B";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
+        <A />
+        <B />
+        {/* <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <p
@@ -21,7 +24,7 @@ function App() {
         </p>
         <div class="alert alert-primary" role="alert">
           A simple primary alert—check it out!
-        </div>
+        </div> */}
       </header>
     </div>
   );
