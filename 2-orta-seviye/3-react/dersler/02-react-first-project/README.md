@@ -9,6 +9,6 @@ npm start # yarn start
 ```sh
 mkdir my-app
 cd my-app
-npx create-react-app .
+npx create-react-app . # yarn create react-app my-app
 npm start
 ```
