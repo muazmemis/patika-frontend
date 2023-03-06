@@ -33,3 +33,8 @@ cd my-app
 npx create-react-app . # yarn create react-app my-app
 npm start
 ```
+
+```sh
+yarn add axios
+yarn add react-router-dom
+```
