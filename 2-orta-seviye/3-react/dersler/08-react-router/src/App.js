@@ -22,9 +22,10 @@ function App() {
         </nav>
 
         <Routes>
+          {/* <Route path="/" exact element={<Home />} /> router son güncellemedn sonra exact olmadan da doğru çalışıyor */}
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/users" element={<Users />} />
-          <Route path="/" element={<Home />} />
         </Routes>
       </div>
     </Router>
