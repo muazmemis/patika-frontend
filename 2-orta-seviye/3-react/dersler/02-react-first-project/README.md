@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
 ```sh
+npm install --global yarn # yarn set version stable
 npx create-react-app my-app 
 cd my-app
 npm start # yarn start
