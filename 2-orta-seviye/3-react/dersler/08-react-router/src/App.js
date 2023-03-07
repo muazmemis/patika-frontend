@@ -8,6 +8,7 @@ import About from "./components/About";
 import Home from "./components/Home";
 import Users from "./components/Users";
 import "./App.css";
+import Error404 from "./components/Error404";
 
 function App() {
   const activeStyle = {
@@ -70,6 +71,7 @@ function App() {
           <Route path="/" index element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/users/*" element={<Users />} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
       </div>
     </Router>
