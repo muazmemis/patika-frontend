@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Routes, Route, NavLink } from "react-router-dom";
-import User from "./User";
+import { NavLink, Outlet } from "react-router-dom";
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -25,9 +24,7 @@ function Users() {
           </li>
         ))}
       </ul>
-      <Routes>
-        <Route path=":id" element={<User />} />
-      </Routes>
+      <Outlet />
     </div>
   );
 }

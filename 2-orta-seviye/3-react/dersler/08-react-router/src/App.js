@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Users from "./components/Users";
 import "./App.css";
 import Error404 from "./components/Error404";
+import User from "./components/User";
 
 function App() {
   const activeStyle = {
@@ -58,7 +59,8 @@ function App() {
                 //     backgroundColor: "brown",
                 //   };
                 // }}
-                className={"active"}
+                // className="active"
+                className={activeClassName}
               >
                 Users
               </NavLink>
@@ -69,8 +71,10 @@ function App() {
         <Routes>
           {/* <Route path="/" exact element={<Home />} /> router son güncellemedn sonra exact olmadan da doğru çalışıyor */}
           <Route path="/" index element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/users/*" element={<Users />} />
+          <Route path="about" element={<About />} />
+          <Route path="users/*" element={<Users />}>
+            <Route path={":id"} element={<User />} />
+          </Route>
           <Route path="*" element={<Error404 />} />
         </Routes>
       </div>

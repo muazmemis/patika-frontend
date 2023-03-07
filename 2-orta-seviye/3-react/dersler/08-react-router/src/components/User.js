@@ -25,13 +25,13 @@ function User() {
       <br />
 
       {parseInt(id) - 1 > 0 && (
-        <NavLink to={`/users/${parseInt(id) - 1}`} className={"previous"}>
+        <NavLink to={`/users/${parseInt(id) - 1}`} className="previous">
           Previous User ({parseInt(id) - 1})
         </NavLink>
       )}
 
       {parseInt(id) + 1 < 11 && (
-        <NavLink to={`/users/${parseInt(id) + 1}`} className={"next"}>
+        <NavLink to={`/users/${parseInt(id) + 1}`} className="next">
           Next User ({parseInt(id) + 1})
         </NavLink>
       )}
