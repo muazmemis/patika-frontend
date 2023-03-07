@@ -19,7 +19,7 @@ Nodes / Second |
 - Arrow function ecmascript 6 ile geldi.
 - backtick (`) ile string içinde parametre yazılabilir.
 
-# React
+## Create React
 
 ```sh
 npx create-react-app my-app 
@@ -37,4 +37,11 @@ npm start
 ```sh
 yarn add axios
 yarn add react-router-dom
+yarn add formik
 ```
+
+[axios](https://formik.org/docs/examples/basic)
+
+[router v6](https://formik.org/docs/examples/basic)
+
+[formik](https://formik.org/docs/examples/basic
