@@ -1,13 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
+import User from "./User";
 
 function Users() {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios("https://jsonplaceholder.typicode.com/users")
+    axios
+      .get("https://jsonplaceholder.typicode.com/users")
       .then((res) => setUsers(res.data))
       .finally(() => setIsLoading(false));
   }, [users]);
@@ -19,10 +21,13 @@ function Users() {
       <ul>
         {users.map((user) => (
           <li key={user.id}>
-            <Link to={`/user/${user.id}`}>{user.name}</Link>
+            <Link to={`${user.id}`}>{user.name}</Link>
           </li>
         ))}
       </ul>
+      <Routes>
+        <Route path=":id" element={<User />} />
+      </Routes>
     </div>
   );
 }
