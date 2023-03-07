@@ -1,22 +1,66 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  NavLink,
+} from "react-router-dom";
 import About from "./components/About";
 import Home from "./components/Home";
 import Users from "./components/Users";
+import "./App.css";
 
 function App() {
+  const activeStyle = {
+    textDecoration: "underline",
+    backgroundColor: "red",
+  };
+
+  const activeClassName = "underline";
+
   return (
     <Router>
       <div>
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <NavLink
+                to="/"
+                style={({ isActive }) => {
+                  return {
+                    display: "block",
+                    margin: isActive ? "10px 0px" : "",
+                    color: "red",
+                    backgroundColor: isActive ? "blue" : "",
+                  };
+                }}
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <NavLink
+                to="about"
+                // style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                style={activeStyle}
+                // className={({ isActive }) =>
+                //   isActive ? activeClassName : undefined
+                // }
+              >
+                About
+              </NavLink>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <NavLink
+                to="users"
+                // style={() => {
+                //   return {
+                //     backgroundColor: "brown",
+                //   };
+                // }}
+                className={"active"}
+              >
+                Users
+              </NavLink>
             </li>
           </ul>
         </nav>

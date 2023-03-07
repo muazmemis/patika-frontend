@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 function User() {
   const { id } = useParams();
@@ -25,15 +25,15 @@ function User() {
       <br />
 
       {parseInt(id) - 1 > 0 && (
-        <Link to={`/users/${parseInt(id) - 1}`}>
+        <NavLink to={`/users/${parseInt(id) - 1}`} className={"previous"}>
           Previous User ({parseInt(id) - 1})
-        </Link>
+        </NavLink>
       )}
 
       {parseInt(id) + 1 < 11 && (
-        <Link to={`/users/${parseInt(id) + 1}`}>
+        <NavLink to={`/users/${parseInt(id) + 1}`} className={"next"}>
           Next User ({parseInt(id) + 1})
-        </Link>
+        </NavLink>
       )}
     </div>
   );
