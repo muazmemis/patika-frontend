@@ -38,10 +38,13 @@ npm start
 yarn add axios
 yarn add react-router-dom
 yarn add formik
+yarn add yup
 ```
 
 [axios](https://formik.org/docs/examples/basic)
 
 [router v6](https://formik.org/docs/examples/basic)
 
-[formik](https://formik.org/docs/examples/basic
+[formik](https://formik.org/docs/examples/basic)
+
+[yupjs](https://github.com/jquense/yup)
