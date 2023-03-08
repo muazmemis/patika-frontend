@@ -1,4 +1,4 @@
-import { Formik, Field, Form } from "formik";
+import { Formik } from "formik";
 
 function App() {
   return (
@@ -12,7 +12,43 @@ function App() {
         }}
         onSubmit={(values) => console.log(values)}
       >
-        <Form>
+        {({ handleSubmit, handleChange }) => (
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="firstName" style={{ marginRight: "10px" }}>
+              First Name
+            </label>
+            <input name="firstName" onChange={handleChange} />
+
+            <br />
+            <br />
+
+            <label htmlFor="lastName" style={{ marginRight: "10px" }}>
+              Last Name
+            </label>
+            <input name="lastName" placeholder="Last" onChange={handleChange} />
+
+            <br />
+            <br />
+
+            <label htmlFor="email" style={{ marginRight: "10px" }}>
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              placeholder="jane@acme.com"
+              type="email"
+              onChange={handleChange}
+            />
+
+            <br />
+            <br />
+
+            <button type="submit">Submit</button>
+          </form>
+        )}
+
+        {/* <Form>
           <label htmlFor="firstName" style={{ marginRight: "10px" }}>
             First Name
           </label>
@@ -43,7 +79,7 @@ function App() {
           <br />
 
           <button type="submit">Submit</button>
-        </Form>
+        </Form> */}
       </Formik>
     </div>
   );
