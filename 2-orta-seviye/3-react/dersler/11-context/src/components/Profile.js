@@ -1,8 +1,8 @@
-import React, { useContext, useState } from "react";
-import UserContext from "../context/UserContext";
+import React, { useState } from "react";
+import { useUser } from "../context/UserContext";
 
 function Profile() {
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser } = useUser();
   const [loading, setLoading] = useState(false);
 
   const handleLogin = () => {
