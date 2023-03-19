@@ -9,7 +9,6 @@ function Messages() {
 module.exports = new Messages();
 
 Messages.prototype.upsert = function ({ message }) {
-  console.log("redis", message);
   this.client.hset(
     "messages",
     shortid.generate(),
