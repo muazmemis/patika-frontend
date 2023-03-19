@@ -42,6 +42,7 @@ yarn add formik
 yarn add yup
 yarn add socket.io-client
 npm install --save react-scrollable-feed
+yarn add react react-intl
 ```
 
 [axios](https://formik.org/docs/examples/basic)
