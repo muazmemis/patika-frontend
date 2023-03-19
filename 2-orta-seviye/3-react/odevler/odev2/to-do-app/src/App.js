@@ -1,82 +1,60 @@
+import { useState } from "react";
 import "./App.css";
+import ToDoList from "./components/ToDoList";
+import Footer from "./components/Footer";
 
 function App() {
+  const [input, setInput] = useState("");
+  const [items, setItems] = useState([
+    { id: 1, text: "Learn HTML", completed: false },
+    { id: 2, text: "Learn CSS", completed: false },
+    { id: 3, text: "Learn Javascript", completed: false },
+    { id: 4, text: "Learn React.JS", completed: false },
+    { id: 5, text: "Find a Job", completed: false },
+  ]);
+
+  function handleInput({ target }) {
+    setInput(target.value);
+  }
+
+  function addItem(e) {
+    if (e.key === "Enter") {
+      const newId =
+        items.length > 0 ? Math.max(...items.map((item) => item.id)) + 1 : 1;
+
+      setItems([...items, { id: newId, text: input, completed: false }]);
+      setInput("");
+    }
+  }
+
+  function toggleAllCompleted() {
+    const allChecked = items.every((item) => !item.completed);
+    setItems(items.map((item) => ({ ...item, completed: allChecked })));
+  }
+
+  function removeItem(index) {
+    setItems(items.filter((item, i) => i !== index));
+  }
+
   return (
-    <div>
-      <section class="todoapp">
-        <header class="header">
-          <h1>todos</h1>
-          <form>
-            <input
-              class="new-todo"
-              placeholder="What needs to be done?"
-              autoFocus
-            />
-          </form>
-        </header>
-
-        <section class="main">
-          <input class="toggle-all" type="checkbox" />
-          <label for="toggle-all">Mark all as complete</label>
-
-          <ul class="todo-list">
-            <li class="completed">
-              <div class="view">
-                <input class="toggle" type="checkbox" />
-                <label>Learn JavaScript</label>
-                <button class="destroy"></button>
-              </div>
-            </li>
-            <li>
-              <div class="view">
-                <input class="toggle" type="checkbox" />
-                <label>Learn React</label>
-                <button class="destroy"></button>
-              </div>
-            </li>
-            <li>
-              <div class="view">
-                <input class="toggle" type="checkbox" />
-                <label>Have a life!</label>
-                <button class="destroy"></button>
-              </div>
-            </li>
-          </ul>
-        </section>
-
-        <footer class="footer">
-          <span class="todo-count">
-            <strong>2</strong>
-            items left
-          </span>
-
-          <ul class="filters">
-            <li>
-              <a href="#/" class="selected">
-                All
-              </a>
-            </li>
-            <li>
-              <a href="#/">Active</a>
-            </li>
-            <li>
-              <a href="#/">Completed</a>
-            </li>
-          </ul>
-
-          <button class="clear-completed">Clear completed</button>
-        </footer>
-      </section>
-
-      <footer class="info">
-        <p>Click to edit a todo</p>
-        <p>
-          Created by <a href="https://d12n.me/">Dmitry Sharabin</a>
-        </p>
-        <p>
-          Part of <a href="http://todomvc.com">TodoMVC</a>
-        </p>
-      </footer>
+    <div className="App">
+      <h1 className="todos-text">todos</h1>
+      <div className="notebookContainer">
+        <div className="inputContainer">
+          <button className="markAllCompleted" onClick={toggleAllCompleted}>
+            ❯
+          </button>
+          <input
+            className="enterItemInput"
+            value={input}
+            onChange={handleInput}
+            onKeyDown={addItem}
+            placeholder="What needs to be done?"
+          />
+        </div>
+        <ToDoList items={items} setItems={setItems} removeItem={removeItem} />
+        <Footer items={items} setItems={setItems} />
+      </div>
     </div>
   );
 }
