@@ -39,6 +39,7 @@ yarn add axios
 yarn add react-router-dom
 yarn add formik
 yarn add yup
+yarn add socket.io-client
 ```
 
 [axios](https://formik.org/docs/examples/basic)

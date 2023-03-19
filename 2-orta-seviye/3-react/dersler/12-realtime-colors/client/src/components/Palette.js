@@ -1,5 +1,3 @@
-import React from "react";
-
 function Palette() {
   return (
     <div className="palette">
