@@ -4,8 +4,7 @@ import ChatList from "./ChatList";
 
 function Container() {
   return (
-    <div>
-      Container
+    <div className="App">
       <ChatList />
       <ChatForm />
     </div>
