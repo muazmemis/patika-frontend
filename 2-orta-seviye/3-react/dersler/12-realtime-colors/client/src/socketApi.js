@@ -12,3 +12,7 @@ export const init = () => {
     console.log("Sunucuya bağlanıldı");
   });
 };
+
+export const send = (color) => {
+  socket.emit("newColor", color)
+}
