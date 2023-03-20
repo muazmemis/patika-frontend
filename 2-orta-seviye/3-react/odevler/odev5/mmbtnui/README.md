@@ -15,12 +15,23 @@ npm install --save mmbtnui
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'mmbtnui'
-import 'mmbtnui/dist/index.css'
+import { Button } from 'bgbtnui'
+import 'bgbtnui/dist/index.css'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return (
+      <>
+        <Button type='b-primary'>Primary Button</Button>
+        <Button type='b-default'>Default Button</Button>
+        <Button type='b-dashed'>Dashed Button</Button>
+        <br />
+        <Button type='b-text'>Text Button</Button>
+        <Button type='b-link' href='...'>
+          Link Button
+        </Button>
+      </>
+    )
   }
 }
 ```
