@@ -1,12 +1,11 @@
 import "./App.css";
-import { Button, ExampleComponent } from "incsoft";
-import second from "incsoft/dist/index.css";
+import { Button, Paragraph } from "incsoft";
 
 function App() {
   return (
     <div className="App">
-      <Button text="Selam" />
-      <ExampleComponent text="Selam ben example component" />
+      <Paragraph text="Selam" onClick={() => console.log("paragraph")} />
+      <Button text="Selam" onClick={() => console.log("merhaba")} />
     </div>
   );
 }

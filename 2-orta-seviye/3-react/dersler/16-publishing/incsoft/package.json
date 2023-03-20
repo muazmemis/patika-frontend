@@ -1,10 +1,10 @@
 {
   "name": "incsoft",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Made with create-react-library",
-  "author": "",
+  "author": "muazmemis",
   "license": "MIT",
-  "repository": "/incsoft",
+  "repository": "muazmemis/incsoft",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
