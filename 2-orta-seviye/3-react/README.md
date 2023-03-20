@@ -36,6 +36,10 @@ npm start
 ```
 
 ```sh
+create-react-library
+```
+
+```sh
 yarn add axios
 yarn add react-router-dom
 yarn add formik
@@ -52,3 +56,5 @@ yarn add react react-intl
 [formik](https://formik.org/docs/examples/basic)
 
 [yupjs](https://github.com/jquense/yup)
+
+[npm-package-name-checker](https://remarkablemark.org/npm-package-name-checker)
