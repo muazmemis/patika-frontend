@@ -1,9 +1,77 @@
-/* add css module styles here (optional) */
+.b-primary {
+  border: 0;
+  background-color: #a66cff;
+  color: white;
+}
 
-.test {
-  margin: 2em;
-  padding: 0.5em;
-  border: 2px solid #000;
-  font-size: 2em;
-  text-align: center;
+.b-primary:hover {
+  border: 0;
+  background-color: #a66cff;
+  animation: opacityAnimation 1s;
+  opacity: 90%;
+  color: white;
+}
+
+.b-default {
+  border: 1px solid gray;
+  color: black;
+  background-color: transparent;
+}
+
+.b-default:hover {
+  animation: coloredAnimation 1s;
+  border: 1px solid #a66cff;
+  color: #a66cff;
+  background-color: transparent;
+}
+
+.b-dashed {
+  border: 1px dashed gray;
+  color: black;
+  background-color: transparent;
+}
+
+.b-dashed:hover {
+  animation: coloredAnimation 1s;
+  border: 1px dashed #a66cff;
+  color: #a66cff;
+  background-color: transparent;
+}
+
+.b-text {
+  border: 0;
+  color: black;
+  background-color: transparent;
+}
+
+.b-link {
+  border: 0;
+  color: #a66cff;
+  background-color: transparent;
+}
+
+.b-btn * {
+  width: 10em;
+  height: 3em;
+  border-radius: 0.25em;
+}
+
+@keyframes opacityAnimation {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 90%;
+  }
+}
+
+@keyframes coloredAnimation {
+  from {
+    border-color: gray;
+    color: black;
+  }
+  to {
+    border-color: #a66cff;
+    color: #a66cff;
+  }
 }
