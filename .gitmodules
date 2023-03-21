@@ -1,3 +1,6 @@
 [submodule "netlify"]
 	path = ./2-orta-seviye/3-react/dersler/17-deploying/netlify
 	url = https://github.com/MuazMemis/netlify-react-app.git
+[submodule "2-orta-seviye/3-react/dersler/17-deploying/netlify"]
+	path = 2-orta-seviye/3-react/dersler/17-deploying/netlify
+	url = https://github.com/MuazMemis/netlify-react-app.git
