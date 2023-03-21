@@ -1,0 +1,3 @@
+[submodule "2-orta-seviye/3-react/dersler/17-deploying/netlify"]
+	path = netlify
+	url = https://github.com/MuazMemis/netlify-react-app.git
