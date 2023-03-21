@@ -55,6 +55,10 @@ npm install --save react-scrollable-feed
 yarn add react react-intl
 ```
 
+```sh
+git submodule add https://github.com/MuazMemis/netlify-react-app.git ./2-orta-seviye/3-react/dersler/17-deploying/netlify
+```
+
 [axios](https://formik.org/docs/examples/basic)
 
 [router v6](https://formik.org/docs/examples/basic)
