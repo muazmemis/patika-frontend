@@ -56,11 +56,12 @@ yarn add react react-intl
 ```
 
 ```sh
-git submodule add https://github.com/MuazMemis/netlify-react-app.git ./2-orta-seviye/3-react/dersler/17-deploying/netlify
+git submodule add https://github.com/MuazMemis/react-deploy.git ./2-orta-seviye/3-react/dersler/17-deploying/netlify-aws
 
-# .gitmodules edit
+# update
+git rm --cached 2-orta-seviye/3-react/dersler/17-deploying/netlify
 git submodule sync
-git submodule update --init --recursive --remote
+git submodule update --remote
 ```
 
 [axios](https://formik.org/docs/examples/basic)
