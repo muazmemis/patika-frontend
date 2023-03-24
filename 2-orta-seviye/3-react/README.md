@@ -57,23 +57,10 @@ yarn add react react-intl
 
 ```sh
 git submodule add https://github.com/MuazMemis/netlify-react-app.git ./2-orta-seviye/3-react/dersler/17-deploying/netlify
-```
 
-## AWS
-
-```sh
-ssh -i react-app.pem ubuntu@13.53.194.40
-chmod 400 react-app.pem
-sudo apt-get install -f
-curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash - &&\ sudo apt-get install -y nodejs
-node -v
-npm -v
-sudo apt-get install nginx -y
-sudo chown -R $USER:$GROUP ~/.npm # yarn çalışmazsa... "EACCES: permission denied, open '/home/ubuntu/.config/yarn'"
-sudo chown -R $USER:$GROUP ~/.config
-sudo vi /etc/nginx/sites-available/default
-nginx -t
-service nginx reload
+# .gitmodules edit
+git submodule sync
+git submodule update --init --recursive --remote
 ```
 
 [axios](https://formik.org/docs/examples/basic)
