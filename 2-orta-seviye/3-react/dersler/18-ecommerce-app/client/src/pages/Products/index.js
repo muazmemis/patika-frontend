@@ -5,7 +5,7 @@ import { fetchProducts } from "../../api";
 
 function Products() {
   const { isLoading, error, data } = useQuery({
-    queryKey: ["repoData"],
+    queryKey: ["products"],
     queryFn: fetchProducts,
   });
 

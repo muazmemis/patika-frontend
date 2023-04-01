@@ -14,7 +14,7 @@ function Card({ product }) {
           <Box mt="1" fontWeight="semibold" as="h4" lineHeight="tigth">
             {product.title}
           </Box>
-          <Box>{product.price} $1000</Box>
+          <Box>$ {product.price}</Box>
         </Box>
       </Link>
 
