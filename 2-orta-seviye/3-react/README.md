@@ -35,6 +35,8 @@ npx create-react-app . # yarn create react-app my-app
 npm start
 ```
 
+## Publishing
+
 ```sh
 create-react-library
 npm start # cd example | npm start
