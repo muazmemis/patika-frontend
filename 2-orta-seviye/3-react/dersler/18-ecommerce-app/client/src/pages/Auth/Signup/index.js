@@ -8,12 +8,14 @@ import {
   Input,
   Alert,
 } from "@chakra-ui/react";
-import React from "react";
 import { useFormik } from "formik";
 import validations from "./validations";
 import { fetchRegister } from "../../../api";
+import { useAuth } from "../../../contexts/AuthContext";
 
 function Signup() {
+  const { login } = useAuth();
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -27,6 +29,8 @@ function Signup() {
           email: values.email,
           password: values.password,
         });
+
+        login(registerResponse);
         console.log(registerResponse);
       } catch (e) {
         bag.setErrors({ general: e.response.data.message });
