@@ -10,7 +10,7 @@ axios.interceptors.request.use(
     const token = localStorage.getItem("access-token");
 
     if (allowedOrigins.includes(origin)) {
-      config.headers.Authorization = token;
+      config.headers.authorization = token;
     }
 
     return config;
@@ -38,5 +38,12 @@ export const fetchRegister = async (input) => {
 
 export const fetchMe = async () => {
   const { data } = await axios.get(`${API_URL}/auth/me`);
+  return data;
+};
+
+export const fetchLogout = async () => {
+  const { data } = await axios.post(`${API_URL}/auth/logout`, {
+    refresh_token: localStorage.getItem("refresh-token"),
+  });
   return data;
 };
