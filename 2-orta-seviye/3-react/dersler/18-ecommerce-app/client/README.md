@@ -7,4 +7,5 @@ yarn add moment
 yarn add axios
 yarn add @tanstack/react-query-devtools
 yarn add react-image-gallery
+yarn add formik yup
 ```
