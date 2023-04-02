@@ -6,7 +6,6 @@ import { useAuth } from "../../contexts/AuthContext";
 
 function Navbar() {
   const { loggedIn } = useAuth();
-  console.log(loggedIn);
 
   return (
     <nav className={styles.nav}>
@@ -26,15 +25,15 @@ function Navbar() {
       <div className={styles.right}>
         {loggedIn ? (
           <>
-            <Link to="/cart">
+            {/* <Link to="/cart">
               <Button>Cart</Button>
-            </Link>
+            </Link> */}
             <Link to="/profile">
               <Button>Profile</Button>
             </Link>
-            <Link to="/logout">
+            {/* <Link to="/logout">
               <Button>Logout</Button>
-            </Link>
+            </Link> */}
           </>
         ) : (
           <>

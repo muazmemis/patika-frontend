@@ -31,7 +31,6 @@ function Signup() {
         });
 
         login(registerResponse);
-        console.log(registerResponse);
       } catch (e) {
         bag.setErrors({ general: e.response.data.message });
       }
