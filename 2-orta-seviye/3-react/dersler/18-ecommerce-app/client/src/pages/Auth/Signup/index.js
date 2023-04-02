@@ -9,7 +9,7 @@ import {
   Alert,
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
-import validations from "./validations";
+import validationSchema from "./validations";
 import { fetchRegister } from "../../../api";
 import { useAuth } from "../../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +24,7 @@ function Signup() {
       password: "",
       passwordConfirm: "",
     },
-    validationSchema: validations,
+    validationSchema,
     onSubmit: async (values, bag) => {
       try {
         const registerResponse = await fetchRegister({
