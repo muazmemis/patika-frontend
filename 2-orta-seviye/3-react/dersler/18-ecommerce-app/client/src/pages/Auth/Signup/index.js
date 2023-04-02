@@ -6,11 +6,12 @@ import {
   FormLabel,
   Heading,
   Input,
+  Alert,
 } from "@chakra-ui/react";
 import React from "react";
 import { useFormik } from "formik";
 import validations from "./validations";
-// import useFormik from "yup";
+import { fetchRegister } from "../../../api";
 
 function Signup() {
   const formik = useFormik({
@@ -20,8 +21,16 @@ function Signup() {
       passwordConfirm: "",
     },
     validationSchema: validations,
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values, bag) => {
+      try {
+        const registerResponse = await fetchRegister({
+          email: values.email,
+          password: values.password,
+        });
+        console.log(registerResponse);
+      } catch (e) {
+        bag.setErrors({ general: e.response.data.message });
+      }
     },
   });
 
@@ -32,6 +41,11 @@ function Signup() {
           <Box textAlign="center">
             <Heading>Sign Up</Heading>
           </Box>
+          <Box my={5}>
+            {formik.errors.general && (
+              <Alert status="error">{formik.errors.general}</Alert>
+            )}
+          </Box>
           <Box my="5" textAlign="left">
             <form onSubmit={formik.handleSubmit}>
               <FormControl mt="5">
@@ -41,6 +55,7 @@ function Signup() {
                   onChange={formik.handleChange}
                   onBlur={formik.onBlur}
                   value={formik.values.email}
+                  isInvalid={formik.errors.email}
                 />
               </FormControl>
               <FormControl mt="5">
@@ -51,6 +66,7 @@ function Signup() {
                   onChange={formik.handleChange}
                   onBlur={formik.onBlur}
                   value={formik.values.password}
+                  isInvalid={formik.errors.password}
                 />
               </FormControl>
               <FormControl mt="5">
@@ -61,6 +77,7 @@ function Signup() {
                   onChange={formik.handleChange}
                   onBlur={formik.onBlur}
                   value={formik.values.passwordConfirm}
+                  isInvalid={formik.errors.passwordConfirm}
                 />
               </FormControl>
               <Button mt="5" width="full" type="submit">
