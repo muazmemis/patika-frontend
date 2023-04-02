@@ -12,9 +12,11 @@ import { useFormik } from "formik";
 import validations from "./validations";
 import { fetchRegister } from "../../../api";
 import { useAuth } from "../../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const { login } = useAuth();
+  const nav = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -31,6 +33,7 @@ function Signup() {
         });
 
         login(registerResponse);
+        nav("/profile");
       } catch (e) {
         bag.setErrors({ general: e.response.data.message });
       }
