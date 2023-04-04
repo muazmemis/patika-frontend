@@ -57,14 +57,14 @@ function AdminProducts() {
               placement="top"
             >
               <Button ml={5} colorScheme="pink">
-                Delete
+                Delete 
               </Button>
             </Popconfirm>
           </>
         ),
       },
     ];
-  }, []);
+  }, [deleteMutation]);
 
   if (isLoading) {
     return <div>Loading...</div>;

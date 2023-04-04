@@ -72,3 +72,8 @@ export const fetchOrders = async () => {
   const { data } = await axios.get(`${API_URL}/order`);
   return data;
 };
+
+export const updateProduct = async (id, input) => {
+  const { data } = await axios.put(`${API_URL}/product/${id}`, input);
+  return data;
+};
