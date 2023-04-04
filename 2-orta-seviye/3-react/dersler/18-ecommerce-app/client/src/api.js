@@ -26,8 +26,18 @@ export const fetchProducts = async ({ pageParam = 1 }) => {
   return data;
 };
 
+export const fetchAllProducts = async () => {
+  const { data } = await axios.get(`${API_URL}/product`);
+  return data;
+};
+
 export const fetchProduct = async (id) => {
   const { data } = await axios.get(`${API_URL}/product/${id}`);
+  return data;
+};
+
+export const deleteProduct = async (id) => {
+  const { data } = await axios.delete(`${API_URL}/product/${id}`);
   return data;
 };
 

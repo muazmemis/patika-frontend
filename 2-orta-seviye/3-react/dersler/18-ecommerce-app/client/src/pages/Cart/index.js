@@ -7,7 +7,6 @@ import {
   FormControl,
   FormLabel,
   Image,
-  Input,
   Text,
   useDisclosure,
   Modal,
