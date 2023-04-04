@@ -1,7 +1,7 @@
 import { deleteProduct, fetchProducts } from "../../../api";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Popconfirm, Table } from "antd";
-import { Text, Button } from "@chakra-ui/react";
+import { Text, Button, Flex } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useMemo } from "react";
 
@@ -57,7 +57,7 @@ function AdminProducts() {
               placement="top"
             >
               <Button ml={5} colorScheme="pink">
-                Delete 
+                Delete
               </Button>
             </Popconfirm>
           </>
@@ -76,9 +76,14 @@ function AdminProducts() {
 
   return (
     <div>
-      <Text fontSize={"2xl"} p={5}>
-        Products
-      </Text>
+      <Flex justifyContent={"space-between"} alignItems={"center"}>
+        <Text fontSize={"2xl"} p={5}>
+          Products
+        </Text>
+        <Link to="/admin/products/add">
+          <Button colorScheme="teal">Add a product</Button>
+        </Link>
+      </Flex>
       <Table dataSource={data} columns={columns} rowKey={"_id"} />
     </div>
   );

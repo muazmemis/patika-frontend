@@ -77,3 +77,8 @@ export const updateProduct = async (id, input) => {
   const { data } = await axios.put(`${API_URL}/product/${id}`, input);
   return data;
 };
+
+export const createProduct = async (input) => {
+  const { data } = await axios.post(`${API_URL}/product`, input);
+  return data;
+};

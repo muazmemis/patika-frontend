@@ -1,7 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
-import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { fetchProduct, updateProduct } from "../../../api";
 import {
   Box,
   FormControl,
@@ -9,56 +5,52 @@ import {
   Input,
   Text,
   Button,
-  Flex,
   Textarea,
   Alert,
 } from "@chakra-ui/react";
 import { message } from "antd";
 import { FieldArray, Formik } from "formik";
 import validationSchema from "./validations";
+import { createProduct } from "../../../api";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
-function ProductDetail() {
-  const { product_id } = useParams();
+function AddProduct() {
+  const queryClient = useQueryClient();
+  const createProductMutation = useMutation(createProduct, {
+    onSuccess: () => queryClient.invalidateQueries("admin:products"),
+  });
+
   const nav = useNavigate();
 
-  const { isLoading, data, error } = useQuery(
-    ["admin:product", product_id],
-    () => fetchProduct(product_id)
-  );
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error {error.message}</div>;
-  }
-
   const handleSubmit = (values, bag) => {
-    message.loading({ content: "Loading...", key: "updatable" });
+    message.loading({ content: "Loading...", key: "create" });
+    const newValues = {
+      ...values,
+      photos: JSON.stringify(values.photos),
+    };
 
-    try {
-      updateProduct(product_id, values);
-      message.success({ content: "Updated!", key: "updatable", duration: 2 });
-      nav("/admin/products");
-    } catch (e) {
-      message.error({
-        content: "Error! The product does not updated",
-        key: "updatable",
-        duration: 2,
-      });
-    }
+    createProductMutation.mutate(newValues, {
+      onSuccess: () => {
+        message.success({ content: "created!", key: "create", duration: 2 });
+        nav("/admin/products");
+      },
+    });
   };
 
   return (
     <div>
-      <Text fontSize={"2xl"}>Edit</Text>
+      <Text fontSize={"2xl"}>Add Product</Text>
       <Formik
         initialValues={{
-          title: data.title,
-          price: data.price,
-          description: data.description,
-          photos: data.photos,
+          title: "Title test",
+          price: "2500",
+          description: "lorem ipsum 5",
+          photos: [
+            "https://picsum.photos/200/200",
+            "https://picsum.photos/200/300",
+            "https://picsum.photos/300/300",
+          ],
         }}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
@@ -73,7 +65,7 @@ function ProductDetail() {
           isSubmitting,
         }) => (
           <>
-            <Flex my={5} justifyContent={"center"}>
+            <Box my={5}>
               <form onSubmit={handleSubmit}>
                 <FormControl>
                   <FormLabel>Title</FormLabel>
@@ -166,12 +158,13 @@ function ProductDetail() {
                   mt={5}
                   w={"full"}
                   type="submit"
-                  isLoading={isLoading}
+                  justifyContent={"center"}
+                  isLoading={isSubmitting}
                 >
-                  Submit
+                  Save
                 </Button>
               </form>
-            </Flex>
+            </Box>
           </>
         )}
       </Formik>
@@ -179,4 +172,4 @@ function ProductDetail() {
   );
 }
 
-export default ProductDetail;
+export default AddProduct;
