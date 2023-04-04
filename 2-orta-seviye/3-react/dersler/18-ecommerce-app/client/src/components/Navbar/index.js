@@ -6,7 +6,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useCart } from "../../contexts/CartContext";
 
 function Navbar() {
-  const { loggedIn } = useAuth();
+  const { loggedIn, user } = useAuth();
   const { items } = useCart();
 
   return (
@@ -25,6 +25,13 @@ function Navbar() {
       </div>
 
       <div className={styles.right}>
+        {user?.role === "admin" && (
+          <Link to="/admin">
+            <Button colorScheme="pink" variant="ghost">
+              Admin
+            </Button>
+          </Link>
+        )}
         {loggedIn ? (
           <>
             {items.length > 0 && (
@@ -37,9 +44,6 @@ function Navbar() {
             <Link to="/profile">
               <Button>Profile</Button>
             </Link>
-            {/* <Link to="/logout">
-              <Button>Logout</Button>
-            </Link> */}
           </>
         ) : (
           <>

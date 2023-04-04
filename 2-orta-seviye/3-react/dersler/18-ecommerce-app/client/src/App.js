@@ -9,6 +9,10 @@ import Profile from "./pages/Profile";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import Cart from "./pages/Cart";
 import Error404 from "./pages/Error404";
+import Admin from "./pages/Admin";
+import AdminOrders from "./pages/Admin/Orders";
+import AdminProducts from "./pages/Admin/Products";
+import AdminHome from "./pages/Admin/Home";
 
 function App() {
   return (
@@ -26,6 +30,12 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route element={<ProtectedRoute />}>
             <Route path="/profile" element={<Profile />} />
+          </Route>
+          <Route element={<ProtectedRoute admin={true} />}>
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/home" element={<AdminHome />} />
+            <Route path="/admin/orders" element={<AdminOrders />} />
+            <Route path="/admin/products" element={<AdminProducts />} />
           </Route>
           <Route path="*" element={<Error404 />} />
         </Routes>
