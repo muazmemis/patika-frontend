@@ -14,7 +14,7 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className="container mx-auto mt-5">
       <div>{locale}</div>
       <div>{locales}</div>
       <div>{defaultLocale}</div>
