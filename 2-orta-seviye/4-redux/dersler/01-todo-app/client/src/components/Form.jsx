@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodoAsync } from '../redux/todos/todosSlice';
+import { addTodoAsync } from '../redux/todos/services';
 import Loading from './Loading';
 
 function Form() {
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.todos.addNewTodoLoading);
-  const error = useSelector((state) => state.todos.addNewTodoError);
+  const loading = useSelector((state) => state.todos.addNewTodo.loading);
+  const error = useSelector((state) => state.todos.addNewTodo.error);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
