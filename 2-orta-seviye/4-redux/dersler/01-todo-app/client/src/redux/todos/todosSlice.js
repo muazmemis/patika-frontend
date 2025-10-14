@@ -1,13 +1,19 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, nanoid } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+export const API_URL = 'http://localhost:7000/todos';
+
+export const getTodosAsync = createAsyncThunk('todos/getTodosAsync', async () => {
+  const res = await axios(API_URL);
+  if (res.status === 200) {
+    return { todos: res.data };
+  }
+});
 
 export const todosSlice = createSlice({
   name: 'todos',
   initialState: {
-    items: [
-      { id: 1, title: 'Learn Redux', completed: false },
-      { id: 2, title: 'Build a todo app', completed: true },
-      { id: 3, title: 'Profit', completed: false },
-    ],
+    items: [],
     activeFilter: 'all',
     loading: false,
     error: null,
@@ -17,7 +23,7 @@ export const todosSlice = createSlice({
       reducer: (state, action) => {
         state.items.push(action.payload);
       },
-      prepare: ({title}) => {
+      prepare: ({ title }) => {
         return {
           payload: {
             id: nanoid(),
@@ -40,6 +46,21 @@ export const todosSlice = createSlice({
     clearCompleted: (state) => {
       state.items = state.items.filter((item) => !item.completed);
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getTodosAsync.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getTodosAsync.fulfilled, (state, action) => {
+        state.items = action.payload.todos;
+        state.loading = false;
+      })
+      .addCase(getTodosAsync.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
   },
 });
 
