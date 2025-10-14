@@ -1,7 +1,7 @@
 function Form() {
   return (
     <form>
-      <input className="new-todo" placeholder="What needs to be done?" autofocus />
+      <input className="new-todo" placeholder="What needs to be done?" autoFocus />
     </form>
   );
 }
