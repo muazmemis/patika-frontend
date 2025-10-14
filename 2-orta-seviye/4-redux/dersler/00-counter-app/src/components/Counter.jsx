@@ -4,7 +4,7 @@ import { decrement, increment, incrementByAmount, reset } from '../redux/counter
 
 function Counter() {
   const count = useSelector((state) => state.counter);
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(5);
   const dispatch = useDispatch();
 
   return (
