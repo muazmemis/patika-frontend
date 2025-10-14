@@ -8,6 +8,7 @@ export const todosSlice = createSlice({
       { id: 2, text: 'Build a todo app', completed: true },
       { id: 3, text: 'Profit', completed: false },
     ],
+    activeFilter: 'all',
     loading: false,
     error: null,
   },
@@ -22,9 +23,15 @@ export const todosSlice = createSlice({
     destroy: (state, action) => {
       state.items = state.items.filter((item) => item.id !== action.payload);
     },
+    changeActiveFilter: (state, action) => {
+      state.activeFilter = action.payload;
+    },
+    clearCompleted: (state) => {
+      state.items = state.items.filter((item) => !item.completed);
+    },
   },
 });
 
-export const { addTodo, toggle, destroy } = todosSlice.actions;
+export const { addTodo, toggle, destroy, changeActiveFilter, clearCompleted } = todosSlice.actions;
 
 export default todosSlice.reducer;
