@@ -21,7 +21,7 @@ function TodoList() {
               readOnly
               onChange={() => dispatch(toggle(item.id))}
             />
-            <label> {item.text} </label>
+            <label> {item.title} </label>
             <button className="destroy" onClick={() => handleDestroy(item.id)}></button>
           </div>
         </li>

@@ -1,20 +1,31 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 export const todosSlice = createSlice({
   name: 'todos',
   initialState: {
     items: [
-      { id: 1, text: 'Learn Redux', completed: false },
-      { id: 2, text: 'Build a todo app', completed: true },
-      { id: 3, text: 'Profit', completed: false },
+      { id: 1, title: 'Learn Redux', completed: false },
+      { id: 2, title: 'Build a todo app', completed: true },
+      { id: 3, title: 'Profit', completed: false },
     ],
     activeFilter: 'all',
     loading: false,
     error: null,
   },
   reducers: {
-    addTodo: (state, action) => {
-      state.items.push(action.payload);
+    addTodo: {
+      reducer: (state, action) => {
+        state.items.push(action.payload);
+      },
+      prepare: ({title}) => {
+        return {
+          payload: {
+            id: nanoid(),
+            title,
+            completed: false,
+          },
+        };
+      },
     },
     toggle: (state, action) => {
       const item = state.items.find((item) => item.id === action.payload);
