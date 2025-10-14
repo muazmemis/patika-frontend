@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { changeActiveFilter, clearCompleted } from '../redux/todos/todosSlice';
+import { changeActiveFilter, clearCompleted, selectTodos } from '../redux/todos/todosSlice';
 
 function ContentFooter() {
-  const itemsLeft = useSelector((state) => state.todos.items.filter((item) => !item.completed).length);
+  const itemsLeft = useSelector((state) => selectTodos(state).filter((item) => !item.completed).length);
   const activeFilter = useSelector((state) => state.todos.activeFilter);
   const dispatch = useDispatch();
 
@@ -32,7 +32,9 @@ function ContentFooter() {
           </a>
         </li>
       </ul>
-      <button className="clear-completed" onClick={() => dispatch(clearCompleted())}>Clear completed</button>
+      <button className="clear-completed" onClick={() => dispatch(clearCompleted())}>
+        Clear completed
+      </button>
     </footer>
   );
 }

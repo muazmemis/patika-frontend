@@ -7,10 +7,12 @@ function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
+    const todoText = e.target.todo.value.trim();
+    if (todoText === '') return;
+
     const newTodo = {
       id: nanoid(),
-      text: formData.get('todo'),
+      text: todoText,
       completed: false,
     };
     dispatch(addTodo(newTodo));
