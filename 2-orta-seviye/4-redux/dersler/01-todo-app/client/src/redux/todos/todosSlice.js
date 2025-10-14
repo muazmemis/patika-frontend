@@ -1,11 +1,18 @@
-import { createAsyncThunk, createSlice, nanoid } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const API_URL = 'http://localhost:7000/todos';
+export const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:7000/todos';
 
 export const getTodosAsync = createAsyncThunk('todos/getTodosAsync', async () => {
   const res = await axios(API_URL);
   if (res.status === 200) {
+    return { todos: res.data };
+  }
+});
+
+export const addTodoAsync = createAsyncThunk('todos/addTodoAsync', async (data) => {
+  const res = await axios.post(API_URL, data);
+  if (res.status === 201) {
     return { todos: res.data };
   }
 });
@@ -17,22 +24,10 @@ export const todosSlice = createSlice({
     activeFilter: 'all',
     loading: false,
     error: null,
+    addNewTodoLoading: false,
+    addNewTodoError: null,
   },
   reducers: {
-    addTodo: {
-      reducer: (state, action) => {
-        state.items.push(action.payload);
-      },
-      prepare: ({ title }) => {
-        return {
-          payload: {
-            id: nanoid(),
-            title,
-            completed: false,
-          },
-        };
-      },
-    },
     toggle: (state, action) => {
       const item = state.items.find((item) => item.id === action.payload);
       if (item) item.completed = !item.completed;
@@ -61,6 +56,18 @@ export const todosSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       });
+    builder
+      .addCase(addTodoAsync.pending, (state) => {
+        state.addNewTodoLoading = true;
+      })
+      .addCase(addTodoAsync.fulfilled, (state, action) => {
+        state.items.push(action.payload);
+        state.addNewTodoLoading = false;
+      })
+      .addCase(addTodoAsync.rejected, (state, action) => {
+        state.addNewTodoLoading = false;
+        state.addNewTodoError = action.error.message;
+      });
   },
 });
 
@@ -71,6 +78,6 @@ export const selectActiveFilter = (state) => {
   if (state.todos.activeFilter === 'completed') return state.todos.items.filter((item) => item.completed);
 };
 
-export const { addTodo, toggle, destroy, changeActiveFilter, clearCompleted } = todosSlice.actions;
+export const { toggle, destroy, changeActiveFilter, clearCompleted } = todosSlice.actions;
 
 export default todosSlice.reducer;
