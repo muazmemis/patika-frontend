@@ -6,14 +6,15 @@ export const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:70
 export const getTodosAsync = createAsyncThunk('todos/getTodosAsync', async () => {
   const res = await axios(API_URL);
   if (res.status === 200) {
-    return { todos: res.data };
+    return res.data;
   }
 });
 
 export const addTodoAsync = createAsyncThunk('todos/addTodoAsync', async (data) => {
   const res = await axios.post(API_URL, data);
-  if (res.status === 201) {
-    return { todos: res.data };
+
+  if (res.status === 200) {
+    return res.data;
   }
 });
 
@@ -49,7 +50,7 @@ export const todosSlice = createSlice({
         state.error = null;
       })
       .addCase(getTodosAsync.fulfilled, (state, action) => {
-        state.items = action.payload.todos;
+        state.items = action.payload;
         state.loading = false;
       })
       .addCase(getTodosAsync.rejected, (state, action) => {
