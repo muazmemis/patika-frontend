@@ -11,10 +11,13 @@ export const todosSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    addTodo: (state, action) => {
+      state.items.push(action.payload);
+    },
+  },
 });
 
-// export const { fetchTodosStart, fetchTodosSuccess, fetchTodosFailure, addTodo, toggleTodo, deleteTodo } =
-//   todosSlice.actions;
+export const { addTodo } = todosSlice.actions;
 
 export default todosSlice.reducer;
