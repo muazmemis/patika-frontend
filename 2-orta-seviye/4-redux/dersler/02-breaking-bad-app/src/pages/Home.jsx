@@ -9,14 +9,12 @@ function Home() {
   const characters = useSelector((state) => state.characters.items);
   const loading = useSelector((state) => state.characters.loading);
   const error = useSelector((state) => state.characters.error);
+  const page = useSelector((state) => state.characters.page);
+  const hasNextPage = useSelector((state) => state.characters.hasNextPage);
 
   useEffect(() => {
-    dispatch(fetchCharacters());
+    dispatch(fetchCharacters(page));
   }, [dispatch]);
-
-  if (loading) {
-    return <Loading />;
-  }
 
   if (error) {
     return <Error message={error} />;
@@ -35,6 +33,14 @@ function Home() {
           </div>
         ))}
       </ul>
+
+      {loading && <Loading />}
+      {hasNextPage && !loading && (
+        <button style={{ padding: '1rem', fontSize: '1rem' }} onClick={() => dispatch(fetchCharacters(page))}>
+          Load More
+        </button>
+      )}
+      {!hasNextPage && <p style={{ padding: '1rem', fontSize: '1.5rem' }}>No more characters to load.</p>}
     </div>
   );
 }
