@@ -1,11 +1,9 @@
 import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
 export const contactAdaptor = createEntityAdapter();
+const initialState = contactAdaptor.getInitialState([]);
 
-const initialState = contactAdaptor.getInitialState({
-  status: 'idle',
-  error: null,
-});
+export const contactSelectors = contactAdaptor.getSelectors((state) => state.contacts);
 
 export const contactSlice = createSlice({
   name: 'contacts',
