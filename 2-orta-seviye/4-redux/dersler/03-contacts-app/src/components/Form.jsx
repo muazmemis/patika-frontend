@@ -1,26 +1,44 @@
 import { nanoid } from '@reduxjs/toolkit';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addContacts } from '../redux/contactSlice';
+import { addContact } from '../redux/contactSlice';
 
 function Form() {
   const [name, setName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name) return;
+    if (!name || !phoneNumber) return;
 
-    const contacts = name.split(',').map((name) => ({ id: nanoid(), name: name.trim() }));
-    dispatch(addContacts(contacts));
+    dispatch(addContact({ id: nanoid(), name: name.trim(), phoneNumber }));
 
     setName('');
+    setPhoneNumber('');
   };
 
   return (
     <div>
-      <form action="" onSubmit={handleSubmit}>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+      <form action="" onSubmit={handleSubmit} style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          style={{ padding: '0.5rem', width: '200px', border: '1px solid #ccc', borderRadius: '4px' }}
+        />
+        <input
+          style={{ padding: '0.5rem', width: '200px', border: '1px solid #ccc', borderRadius: '4px' }}
+          type="number"
+          aria-setsize={10}
+          placeholder="Phone Number"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+        />
+        <button type="submit" style={{ padding: '1rem 1rem', cursor: 'pointer' }}>
+          Add Contact
+        </button>
       </form>
     </div>
   );

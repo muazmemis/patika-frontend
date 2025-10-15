@@ -1,5 +1,9 @@
 function Item({ item }) {
-  return <div>{item.name}</div>;
+  return (
+    <li>
+      <span>{item.name}</span> - <span>{item.phoneNumber}</span>
+    </li>
+  );
 }
 
 export default Item;

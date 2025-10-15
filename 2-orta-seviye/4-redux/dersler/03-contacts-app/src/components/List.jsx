@@ -9,7 +9,7 @@ function List() {
   return (
     <div>
       <h2>Contact List</h2>
-      <ul>
+      <ul style={{ listStyleType: 'none', padding: 0 }} >
         {contacts.map((contact) => (
           <Item key={contact.id} item={contact} />
         ))}
