@@ -2,8 +2,8 @@ import { Route, Routes } from 'react-router';
 import './App.css';
 import Navbar from './components/Navbar';
 import About from './pages/About';
+import Detail from './pages/Detail';
 import Home from './pages/Home';
-import Users from './pages/Users';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/users" element={<Users />} />
+        <Route path="/detail/:id" element={<Detail />} />
       </Routes>
     </>
   );
