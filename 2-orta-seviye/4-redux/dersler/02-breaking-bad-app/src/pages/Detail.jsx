@@ -27,7 +27,7 @@ function Detail() {
           padding: '1rem',
           width: '50rem',
           textAlign: 'center',
-          backgroundColor: '#35d5a0ff',
+          backgroundColor: '#0d5b6fff',
           margin: '0 auto',
         }}
       >

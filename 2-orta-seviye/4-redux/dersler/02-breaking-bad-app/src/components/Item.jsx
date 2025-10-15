@@ -1,3 +1,5 @@
+import { NavLink } from 'react-router';
+
 function Item({ loc }) {
   return (
     <div
@@ -12,10 +14,12 @@ function Item({ loc }) {
         backgroundColor: '#2c7a60ff',
       }}
     >
-      <h2>{loc.name}</h2>
-      <p>Type: {loc.type}</p>
-      <p>Dimension: {loc.dimension}</p>
-      <p>Number of Residents: {loc.residents.length}</p>
+      <NavLink to={`/location/${loc.id}`}>
+        <h2>{loc.name}</h2>
+        <p>Type: {loc.type}</p>
+        <p>Dimension: {loc.dimension}</p>
+        <p>Number of Residents: {loc.residents.length}</p>
+      </NavLink>
     </div>
   );
 }

@@ -8,10 +8,16 @@ export const fetchLocations = createAsyncThunk('location/fetchLocations', async 
   return response.data;
 });
 
+export const getById = createAsyncThunk('location/getById', async (id) => {
+  const response = await axios.get(`${API_URL}/location/${id}`);
+  return response.data;
+});
+
 const locationSlice = createSlice({
   name: 'location',
   initialState: {
     items: [],
+    selectedItem: null,
     status: 'idle',
     error: null,
   },
