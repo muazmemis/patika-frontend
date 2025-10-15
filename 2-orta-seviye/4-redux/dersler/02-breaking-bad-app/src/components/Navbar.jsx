@@ -14,7 +14,7 @@ function Navbar() {
       <NavLink to="/" end>
         Home
       </NavLink>
-      <NavLink to="/about">About</NavLink>
+      <NavLink to="/location">Location</NavLink>
     </nav>
   );
 }
