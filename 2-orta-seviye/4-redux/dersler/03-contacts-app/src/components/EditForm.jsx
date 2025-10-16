@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { editContact } from '../redux/contactSlice';
 
 function EditForm({ contact }) {
   const [name, setName] = useState(contact.name);
   const [phoneNumber, setPhoneNumber] = useState(contact.phoneNumber);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !phoneNumber) return;
 
     dispatch(editContact({ id: contact.id, changes: { name, phoneNumber } }));
+    navigate('/');
   };
 
   return (
