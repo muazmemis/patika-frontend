@@ -7,10 +7,21 @@ import { contactSelectors } from '../redux/contactSlice';
 
 function Edit() {
   const { id } = useParams();
-  const contact = useSelector(contactSelectors.selectById(id));
+
+  const contactsState = useSelector((state) => state.contacts);
+
+  const contact = useSelector((state) => {
+    return contactSelectors.selectById(state, id);
+  });
 
   if (!contact) {
-    return <div>Contact not found</div>;
+    return (
+      <div>
+        <h2>Contact not found</h2>
+        <p>ID: {id}</p>
+        <p>State: {JSON.stringify(contactsState, null, 2)}</p>
+      </div>
+    );
   }
 
   return (
