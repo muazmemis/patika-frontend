@@ -1,0 +1,17 @@
+{
+  "name": "bootcamps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.18.3+sha256.797d0059bc5fc3356d79c681615a137c7b35e4efc03a4449a8a1abfcbcc4bdc7",
+  "dependencies": {
+    "slugify": "^1.6.6"
+  }
+}
