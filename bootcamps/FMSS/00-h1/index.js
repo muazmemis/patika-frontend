@@ -74,23 +74,38 @@ const topla3 = (a, b) => a + b;
 //   .catch((e) => console.log(e));
 // // .catch((e) => console.log(e.message));
 
-const getComments = (id) => {
-  return new Promise((resolve, reject) => {
-    console.log('comment requested');
-    if (id === 1) {
-      resolve({ success: true });
-    } else {
-      reject(new Error(`Not ok. Expected id:1, Received: ${id}`));
-    }
+// const getComments = (id) => {
+//   return new Promise((resolve, reject) => {
+//     console.log('comment requested');
+//     if (id === 1) {
+//       resolve({ success: true });
+//     } else {
+//       reject(new Error(`Not ok. Expected id:1, Received: ${id}`));
+//     }
+//   });
+// };
+
+// // success
+// getComments(1)
+//   .then(() => console.log('istek atıldı'))
+//   .catch((e) => console.log(e));
+
+// // failed
+// getComments(2)
+//   .then(() => console.log('istek atıldı'))
+//   .catch((e) => console.log(e));
+
+import axios from 'axios';
+
+const getUsers = () => {
+  return new Promise(async (resolve, reject) => {
+    const { data } = await axios('https://jsonplaceholder.typicode.com/users');
+    resolve(data);
   });
 };
 
-// success
-getComments(1)
-  .then(() => console.log('istek atıldı'))
-  .catch((e) => console.log(e));
-
-// failed
-getComments(2)
-  .then(() => console.log('istek atıldı'))
+getUsers()
+  .then((data) => {
+    console.log('data recevied: ', data);
+  })
   .catch((e) => console.log(e));
