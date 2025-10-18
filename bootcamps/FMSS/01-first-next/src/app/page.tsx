@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <>
-      <h1>NextJS</h1>
+      <h1 className="flex justify-center">NextJS 2</h1>
     </>
   )
 }
