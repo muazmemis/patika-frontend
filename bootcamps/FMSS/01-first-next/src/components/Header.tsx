@@ -4,5 +4,9 @@ interface HeaderProps {
 }
 
 export default function Header(props: HeaderProps) {
-  return <header>Merhaba {props.username} {props.age}</header>
+  return (
+    <header>
+      Merhaba {props.username} {props.age}
+    </header>
+  )
 }
