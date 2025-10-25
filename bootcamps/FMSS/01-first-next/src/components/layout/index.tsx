@@ -13,9 +13,10 @@ function Layout({
   const authContext = useAuthContext()
 
   useEffect(() => {
-    console.log(authContext.isUserAuthenticated())
+    const token = localStorage.getItem('token')
 
     if (!authContext.isUserAuthenticated()) {
+      if (token) authContext.setAuthState(token)
       redirect('/login')
     }
   })

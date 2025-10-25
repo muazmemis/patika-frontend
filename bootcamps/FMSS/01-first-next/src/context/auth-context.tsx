@@ -20,17 +20,13 @@ const AuthContext = createContext<IAuthContext>({
 const AuthProvider = ({ children }: any) => {
   const [authState, setAuthState] = useState<IAuthToken>({ token: '' })
 
-  const setAuthInfo = ({ data }: any) => {
-    console.log('test')
-
-    localStorage.setItem('token', data.data)
-    setAuthState({ token: data.data })
+  const setAuthInfo = ({ token }: IAuthToken) => {
+    localStorage.setItem('token', token)
+    setAuthState({ token: token })
     isUserAuthenticated
   }
 
   const isUserAuthenticated = () => {
-    console.log('token', authState.token)
-
     return authState.token ? true : false
   }
 
