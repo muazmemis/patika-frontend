@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 export default function Home() {
   console.log(process.env.NEXT_PUBLIC_API_URL)
 
@@ -17,6 +19,7 @@ export default function Home() {
   return (
     <>
       <h1 className="flex justify-center">NextJS 2</h1>
+      <Image src="https://picsum.photos/200/300" width={500} height={500} alt="Picture of the author" priority />
     </>
   )
 }
